@@ -1,1 +1,19 @@
-Not Found
+{
+  "version": "0.1.0",
+  "notes": "See the assets to download this version and install.",
+  "pub_date": "2025-03-23T09:05:55.515Z",
+  "platforms": {
+    "darwin-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRMzRDWjZqU3lCSE5tNVd0Q1M5NXV2djZxbWpSUFZabTE0U1ZsL0lxV0UzWm5GTStaK0xkYnErWGt0SlQ2TDh1MDNkalBTYUFRUGdZL2c3UzdpUU9pQVZlOXlXTG5VOUFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzQyNzE5OTI3CWZpbGU6WmVuaW1hbkFJLmFwcC50YXIuZ3oKRmNlekFtYmFNWnRvUWF0VE9uYm9QSWx2Sjc3VDVySUV5bGxhdGxaS2YvTW1vczRURjVlSCsyM0NnN0hFUGRkMURQQXg0UmJNbCsxZGxPM1czZ052Q3c9PQo=",
+      "url": "https://github.com/devlover-xyz/zeniman-ai-tools/releases/download/app-v0.1.0/ZenimanAI_x64.app.tar.gz"
+    },
+    "darwin-aarch64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRMzRDWjZqU3lCSEkzdThoYTR4bTQ3a0NBMmU5djBOYkp1RngzTlAwVnFxVDRkaFZ3dVR5NWxERktQSFJ1dTVHMkc1V2F1MSs1UUdPcTJSeWtITXRnc2c2T2ZRSlhWYmc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzQyNzE5OTE4CWZpbGU6WmVuaW1hbkFJLmFwcC50YXIuZ3oKMHh2YkxnTERuWFBzTExMcXUxdTB4TElBZy9NZldxT0ZCK0RrdVhzVVRuUVViclFDamJiL3gvQnlkZitjeVNTc3VYOXdKbFlTSUJuaDZkcjNqdGkwQ0E9PQo=",
+      "url": "https://github.com/devlover-xyz/zeniman-ai-tools/releases/download/app-v0.1.0/ZenimanAI_aarch64.app.tar.gz"
+    },
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRMzRDWjZqU3lCSFBGZUluQlduMm1Xd01zN1F6UVlMSno4RGcrNWIydmU5Vm5LQXE1UnUrcDRrYkZNMEg0UXlJMHdyeUI2S2xnclcyd3IvamJ5aGRVQlVlSVJWOFlEN0FFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzQyNzIwNzUxCWZpbGU6WmVuaW1hbkFJXzAuMS4wX3g2NF9lbi1VUy5tc2kKcXJUQ0VqRnk4Z0pqUDc1QldsSk1kNGdXcCtaK21PQUxEb0lScEpubGNzOFpRMXhoK2hoNUhlRVZtTzVjQ0YwdnowRjJiK1FWQncxSHFTTVcwTlViQnc9PQo=",
+      "url": "https://github.com/devlover-xyz/zeniman-ai-tools/releases/download/app-v0.1.0/ZenimanAI_0.1.0_x64_en-US.msi"
+    }
+  }
+}
