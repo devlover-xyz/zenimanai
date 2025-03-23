@@ -52,6 +52,8 @@
         };
         
         // Fetch the versions list from versions.json
+        // Fetch the versions list from versions.json
+        fetch('versions.json')
         .then(response => {
                 // Check if response is OK before parsing
                 if (!response.ok) {
