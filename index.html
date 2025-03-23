@@ -155,19 +155,19 @@
                     console.error('Error loading download links:', error);
                     // Show links with fallback URLs if fetch fails
                     const windowsDownload = document.getElementById('windows-download');
-                    windowsDownload.href = `downloads/v${version}/ZenimanAI-${version}_x64-setup.exe`;
+                    windowsDownload.href = `downloads/v${version}/ZenimanAI_${version}_x64-setup.exe`;
                     windowsDownload.classList.remove('hidden');
 
                     const windowsDownloadMsi = document.getElementById('windows-download-msi');
-                    windowsDownloadMsi.href = `downloads/v${version}/ZenimanAI-${version}_x64_en-US.msi`;
+                    windowsDownloadMsi.href = `downloads/v${version}/ZenimanAI_${version}_x64_en-US.msi`;
                     windowsDownloadMsi.classList.remove('hidden');
                     
                     const macosIntelDownload = document.getElementById('macos-intel-download');
-                    macosIntelDownload.href = `downloads/v${version}/ZenimanAI-${version}_x64.dmg`;
+                    macosIntelDownload.href = `downloads/v${version}/ZenimanAI_${version}_x64.dmg`;
                     macosIntelDownload.classList.remove('hidden');
                     
                     const macosArmDownload = document.getElementById('macos-arm-download');
-                    macosArmDownload.href = `downloads/v${version}/ZenimanAI-${version}_aarch64.dmg`;
+                    macosArmDownload.href = `downloads/v${version}/ZenimanAI_${version}_aarch64.dmg`;
                     macosArmDownload.classList.remove('hidden');
                 });
         }
