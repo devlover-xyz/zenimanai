@@ -22,6 +22,11 @@
                     <div class="text-xl mb-1">Windows</div>
                     <div class="text-sm">Download .exe installer</div>
                 </a>
+
+                <a id="windows-download-msi" href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded text-center hidden">
+                    <div class="text-xl mb-1">Windows (msi)</div>
+                    <div class="text-sm">Download .msi installer</div>
+                </a>
                 
                 <a id="macos-intel-download" href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded text-center hidden">
                     <div class="text-xl mb-1">macOS (Intel)</div>
@@ -44,6 +49,7 @@
             <p>© 2025 Zeniman AI. All rights reserved.</p>
         </footer>
     </div>
+
 
     <script type='text/javascript'>
         // Default version data in case the fetch fails
@@ -116,7 +122,8 @@
                     
                     // Find specific installers
                     const windowsLink = links.find(a => a.href.includes('.exe'));
-                    const macosIntelLink = links.find(a => a.href.includes('x86_64') && a.href.includes('.dmg'));
+                    const windowsLinkMsi = links.find(a => a.href.includes('.msi'));
+                    const macosIntelLink = links.find(a => a.href.includes('x64') && a.href.includes('.dmg'));
                     const macosArmLink = links.find(a => a.href.includes('aarch64') && a.href.includes('.dmg'));
                     
                     // Set download links
@@ -124,6 +131,12 @@
                         const windowsDownload = document.getElementById('windows-download');
                         windowsDownload.href = windowsLink.href;
                         windowsDownload.classList.remove('hidden');
+                    }
+
+                    if (windowsLinkMsi) {
+                        const windowsDownloadMsi = document.getElementById('windows-download-msi');
+                        windowsDownloadMsi.href = windowsLinkMsi.href;
+                        windowsDownloadMsi.classList.remove('hidden');
                     }
                     
                     if (macosIntelLink) {
