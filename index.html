@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeniman AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto max-w-6xl p-6">
+        <header class="mb-10">
+            <h1 class="text-3xl font-bold text-gray-800">Zeniman AI </h1>
+            <p class="text-gray-600 mt-2">An AI-powered desktop application for generating and managing metadata tools</p>
+        </header>
+
+        <section class="bg-white shadow rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Download Latest Version</h2>
+            <div id="latest-version" class="text-gray-600 mb-4">Loading latest version...</div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <a id="windows-download" href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded text-center hidden">
+                    <div class="text-xl mb-1">Windows</div>
+                    <div class="text-sm">Download .exe installer</div>
+                </a>
+
+                <a id="windows-download-msi" href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded text-center hidden">
+                    <div class="text-xl mb-1">Windows (msi)</div>
+                    <div class="text-sm">Download .msi installer</div>
+                </a>
+                
+                <a id="macos-intel-download" href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded text-center hidden">
+                    <div class="text-xl mb-1">macOS (Intel)</div>
+                    <div class="text-sm">Download .dmg installer</div>
+                </a>
+                
+                <a id="macos-arm-download" href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded text-center hidden">
+                    <div class="text-xl mb-1">macOS (Apple Silicon)</div>
+                    <div class="text-sm">Download .dmg installer</div>
+                </a>
+            </div>
+        </section>
+        
+        <section class="bg-white shadow rounded-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">Previous Versions</h2>
+            <div id="versions-list" class="divide-y">Loading previous versions...</div>
+        </section>
+        
+        <footer class="mt-10 text-center text-gray-600 text-sm">
+            <p>© 2025 Zeniman AI. All rights reserved.</p>
+        </footer>
+    </div>
+
+
+    <script type='text/javascript'>
+        // Default version data in case the fetch fails
+        const defaultVersionData = {
+            versions: ["1.0.0"]
+        };
+        
+        // Fetch the versions list from versions.json
+        // Fetch the versions list from versions.json
+        fetch('versions.json')
+        .then(response => {
+                // Check if response is OK before parsing
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const latestVersion = data.versions[0];
+                document.getElementById('latest-version').textContent = `Version ${latestVersion}`;
+                
+                // Populate download links for latest version
+                loadDownloadLinks(latestVersion);
+                
+                // Populate previous versions
+                const versionsList = document.getElementById('versions-list');
+                versionsList.innerHTML = '';
+                
+                data.versions.slice(1).forEach(version => {
+                    const versionItem = document.createElement('div');
+                    versionItem.className = 'py-4';
+                    versionItem.innerHTML = `
+                        <h3 class="text-lg font-medium">Version ${version}</h3>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <a href="downloads/v${version}/" class="text-blue-500 hover:text-blue-700 underline">
+                                View all v${version} downloads
+                            </a>
+                        </div>
+                    `;
+                    versionsList.appendChild(versionItem);
+                });
+                
+                if (data.versions.length <= 1) {
+                    versionsList.innerHTML = '<p>No previous versions available</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching versions:', error);
+              
+                document.getElementById('latest-version').textContent = 'Error loading latest version';
+                document.getElementById('versions-list').innerHTML = '<p>No previous versions available</p>';
+                
+                // Try to load download links for the default version
+                // loadDownloadLinks(data.versions[0]);
+            });
+            
+        function loadDownloadLinks(version) {
+            // This function looks for the specific file types in the version directory
+            fetch(`downloads/v${version}/`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const links = Array.from(doc.querySelectorAll('a'));
+                    
+                    // Find specific installers
+                    const windowsLink = links.find(a => a.href.includes('.exe'));
+                    const windowsLinkMsi = links.find(a => a.href.includes('.msi'));
+                    const macosIntelLink = links.find(a => a.href.includes('x64') && a.href.includes('.dmg'));
+                    const macosArmLink = links.find(a => a.href.includes('aarch64') && a.href.includes('.dmg'));
+                    
+                    // Set download links
+                    if (windowsLink) {
+                        const windowsDownload = document.getElementById('windows-download');
+                        windowsDownload.href = windowsLink.href;
+                        windowsDownload.classList.remove('hidden');
+                    }
+
+                    if (windowsLinkMsi) {
+                        const windowsDownloadMsi = document.getElementById('windows-download-msi');
+                        windowsDownloadMsi.href = windowsLinkMsi.href;
+                        windowsDownloadMsi.classList.remove('hidden');
+                    }
+                    
+                    if (macosIntelLink) {
+                        const macosIntelDownload = document.getElementById('macos-intel-download');
+                        macosIntelDownload.href = macosIntelLink.href;
+                        macosIntelDownload.classList.remove('hidden');
+                    }
+                    
+                    if (macosArmLink) {
+                        const macosArmDownload = document.getElementById('macos-arm-download');
+                        macosArmDownload.href = macosArmLink.href;
+                        macosArmDownload.classList.remove('hidden');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading download links:', error);
+                    // Show links with fallback URLs if fetch fails
+                    const windowsDownload = document.getElementById('windows-download');
+                    windowsDownload.href = `downloads/v${version}/ZenimanAI-${version}_x64-setup.exe`;
+                    windowsDownload.classList.remove('hidden');
+
+                    const windowsDownloadMsi = document.getElementById('windows-download-msi');
+                    windowsDownloadMsi.href = `downloads/v${version}/ZenimanAI-${version}_x64_en-US.msi`;
+                    windowsDownloadMsi.classList.remove('hidden');
+                    
+                    const macosIntelDownload = document.getElementById('macos-intel-download');
+                    macosIntelDownload.href = `downloads/v${version}/ZenimanAI-${version}_x64.dmg`;
+                    macosIntelDownload.classList.remove('hidden');
+                    
+                    const macosArmDownload = document.getElementById('macos-arm-download');
+                    macosArmDownload.href = `downloads/v${version}/ZenimanAI-${version}_aarch64.dmg`;
+                    macosArmDownload.classList.remove('hidden');
+                });
+        }
+    </script>
+</body>
+</html>
